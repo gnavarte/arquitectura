@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useAuth } from '../../hooks/useAuth';
-import { useForm } from '../../hooks/useForm';
+import { useNavigate } from 'react-router-dom';
+import { useAuth, useForm } from '../../hooks';
 import './LoginPage.css';
 
 const loginFormFields = {
@@ -17,23 +17,25 @@ const registerFormFields = {
 
 function LoginPage() {
 
+    const navigate = useNavigate();
     const { login, register, errorMessage } = useAuth();
-    const { formState: loginValues, onInputChange: handleLoginChange } = useForm(loginFormFields);
-    const { formState: registerValues, onInputChange: handleRegisterChange } = useForm(registerFormFields);
+    const { loginEmail, loginPassword, onChange: handleLoginChange } = useForm(loginFormFields);
+    const { registerName, registerEmail, registerPassword, registerPassword2, onChange: handleRegisterChange } = useForm(registerFormFields);
 
     const loginSubmit = (event) => {
         event.preventDefault();
-        login(loginValues.loginEmail, loginValues.loginPassword);
+        login(loginEmail, loginPassword);
+        navigate('/dashboard');
     }
 
     const registerSubmit = (event) => {
         event.preventDefault();
-        if (registerValues.registerPassword !== registerValues.registerPassword2) {
+        if (registerPassword !== registerPassword2) {
             console.error('Contraseñas no son iguales');
             return;
         }
 
-        register(registerValues.registerName, registerValues.registerEmail, registerValues.registerPassword);
+        register(registerName, registerEmail, registerPassword);
     }
 
     useEffect(() => {
@@ -47,18 +49,18 @@ function LoginPage() {
             <div className="login-form">
                 <h3>¡Nos alegra verte de nuevo!</h3>
                 <form onSubmit={loginSubmit}>
-                    <input type="email" placeholder="Correo electrónico" value={loginValues.loginEmail} onChange={(event) => handleLoginChange(event, 'loginEmail')} required />
-                    <input type="password" placeholder="Contraseña" value={loginValues.loginPassword} onChange={(event) => handleLoginChange(event, 'loginPassword')} required />
+                    <input type="email" placeholder="Correo electrónico" value={loginEmail} onChange={(event) => handleLoginChange(event.target.value, 'loginEmail')} />
+                    <input type="password" placeholder="Contraseña" value={loginPassword} onChange={(event) => handleLoginChange(event.target.value, 'loginPassword')} />
                     <button type="submit">Iniciar Sesión</button>
                 </form>
             </div>
             <div className="register-form">
                 <h3>¿Es tu primera vez? Regístrate</h3>
                 <form onSubmit={registerSubmit}>
-                    <input type="text" placeholder="Nombre" value={registerValues.registerName} onChange={(event) => handleRegisterChange(event, 'registerName')} required />
-                    <input type="email" placeholder="Correo electrónico" value={registerValues.registerEmail} onChange={(event) => handleRegisterChange(event, 'registerEmail')} required />
-                    <input type="password" placeholder="Contraseña" value={registerValues.registerPassword} onChange={(event) => handleRegisterChange(event, 'registerPassword')} required />
-                    <input type="password" placeholder="Confirmar Contraseña" value={registerValues.registerPassword2} onChange={(event) => handleRegisterChange(event, 'registerPassword2')} required />
+                    <input type="text" placeholder="Nombre" value={registerName} onChange={(event) => handleRegisterChange(event.target.value, 'registerName')} required />
+                    <input type="email" placeholder="Correo electrónico" value={registerEmail} onChange={(event) => handleRegisterChange(event.target.value, 'registerEmail')} required />
+                    <input type="password" placeholder="Contraseña" value={registerPassword} onChange={(event) => handleRegisterChange(event.target.value, 'registerPassword')} required />
+                    <input type="password" placeholder="Confirmar Contraseña" value={registerPassword2} onChange={(event) => handleRegisterChange(event.target.value, 'registerPassword2')} required />
                     <button type="submit">Registrarse</button>
                 </form>
             </div>

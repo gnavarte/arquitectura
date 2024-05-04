@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './NavigationBar.css';
 import plantaImg from '../../assets/icons/plant.png';
 import { useAuth } from '../../hooks/useAuth';
 
 function NavigationBar() {
+  const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
   const [activeTab, setActiveTab] = useState('Analítica');
 
   const handleLogin = () => {
-    return <Navigate to="/login" />;
+    navigate('/login');
   }
 
   const handleTabClick = (tabName) => {

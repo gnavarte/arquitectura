@@ -1,10 +1,8 @@
-import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import './HomePage.css';
 
 function HomePage() {
     return (
         <div>
-            <NavigationBar />
             <section className="hero">
                 <div className="container">
                     <h1>¡Bienvenido a AgroSmart Solutions S.A.!</h1>
