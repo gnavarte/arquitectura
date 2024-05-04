@@ -1,11 +1,15 @@
 import './App.css';
-import NavigationBar from './components/NavigationBar/NavigationBar';
+import UserProvider from './context/UserProvider';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './router/AppRouter';
 
 function App() {
   return (
-    <div className="App">
-      <NavigationBar />
-    </div>
+    <UserProvider>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
