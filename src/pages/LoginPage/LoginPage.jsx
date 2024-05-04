@@ -4,31 +4,31 @@ import { useForm } from '../../hooks/useForm';
 import './LoginPage.css';
 
 const loginFormFields = {
-    loginEmail:    '',
+    loginEmail: '',
     loginPassword: '',
 }
 
 const registerFormFields = {
-    registerName:      '',
-    registerEmail:     '',
-    registerPassword:  '',
+    registerName: '',
+    registerEmail: '',
+    registerPassword: '',
     registerPassword2: '',
 }
 
 function LoginPage() {
 
     const { login, register, errorMessage } = useAuth();
-    const { values: loginValues, handleChange: handleLoginChange } = useForm( loginFormFields );
-    const { values: registerValues, handleChange: handleRegisterChange } = useForm( registerFormFields );
+    const { formState: loginValues, onInputChange: handleLoginChange } = useForm(loginFormFields);
+    const { formState: registerValues, onInputChange: handleRegisterChange } = useForm(registerFormFields);
 
-    const loginSubmit = ( event ) => {
+    const loginSubmit = (event) => {
         event.preventDefault();
         login(loginValues.loginEmail, loginValues.loginPassword);
     }
 
-    const registerSubmit = ( event ) => {
+    const registerSubmit = (event) => {
         event.preventDefault();
-        if ( registerValues.registerPassword !== registerValues.registerPassword2 ) {
+        if (registerValues.registerPassword !== registerValues.registerPassword2) {
             console.error('Contraseñas no son iguales');
             return;
         }
@@ -37,103 +37,33 @@ function LoginPage() {
     }
 
     useEffect(() => {
-      if ( errorMessage !== undefined ) {
-        console.error('Error en la autenticación:', errorMessage);
-      }    
+        if (errorMessage != null) {
+            console.error('Error en la autenticación:', errorMessage);
+        }
     }, [errorMessage])
 
     return (
-        <div className="container login-container">
-            <div className="row">
-                <div className="col-md-6 login-form-1">
-                    <h3>Ingreso</h3>
-                    <form onSubmit={ loginSubmit }>
-                        <div className="form-group mb-2">
-                            <input 
-                                type="text"
-                                className="form-control"
-                                placeholder="Correo"
-                                name="loginEmail"
-                                value={ loginValues.loginEmail }
-                                onChange={ handleLoginChange }
-                            />
-                        </div>
-                        <div className="form-group mb-2">
-                            <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Contraseña"
-                                name="loginPassword"
-                                value={ loginValues.loginPassword }
-                                onChange={ handleLoginChange }
-                            />
-                        </div>
-                        <div className="d-grid gap-2">
-                            <input 
-                                type="submit"
-                                className="btnSubmit"
-                                value="Login" 
-                            />
-                        </div>
-                    </form>
-                </div>
-
-                <div className="col-md-6 login-form-2">
-                    <h3>Registro</h3>
-                    <form onSubmit={ registerSubmit }>
-                        <div className="form-group mb-2">
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Nombre"
-                                name="registerName"
-                                value={ registerValues.registerName }
-                                onChange={ handleRegisterChange }
-                            />
-                        </div>
-                        <div className="form-group mb-2">
-                            <input
-                                type="email"
-                                className="form-control"
-                                placeholder="Correo"
-                                name="registerEmail"
-                                value={ registerValues.registerEmail }
-                                onChange={ handleRegisterChange }
-                            />
-                        </div>
-                        <div className="form-group mb-2">
-                            <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Contraseña" 
-                                name="registerPassword"
-                                value={ registerValues.registerPassword }
-                                onChange={ handleRegisterChange }
-                            />
-                        </div>
-
-                        <div className="form-group mb-2">
-                            <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Repita la contraseña" 
-                                name="registerPassword2"
-                                value={ registerValues.registerPassword2 }
-                                onChange={ handleRegisterChange }
-                            />
-                        </div>
-
-                        <div className="d-grid gap-2">
-                            <input 
-                                type="submit" 
-                                className="btnSubmit" 
-                                value="Crear cuenta" />
-                        </div>
-                    </form>
-                </div>
+        <div className="login-container">
+            <div className="login-form">
+                <h3>¡Nos alegra verte de nuevo!</h3>
+                <form onSubmit={loginSubmit}>
+                    <input type="email" placeholder="Correo electrónico" value={loginValues.loginEmail} onChange={(event) => handleLoginChange(event, 'loginEmail')} required />
+                    <input type="password" placeholder="Contraseña" value={loginValues.loginPassword} onChange={(event) => handleLoginChange(event, 'loginPassword')} required />
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+            </div>
+            <div className="register-form">
+                <h3>¿Es tu primera vez? Regístrate</h3>
+                <form onSubmit={registerSubmit}>
+                    <input type="text" placeholder="Nombre" value={registerValues.registerName} onChange={(event) => handleRegisterChange(event, 'registerName')} required />
+                    <input type="email" placeholder="Correo electrónico" value={registerValues.registerEmail} onChange={(event) => handleRegisterChange(event, 'registerEmail')} required />
+                    <input type="password" placeholder="Contraseña" value={registerValues.registerPassword} onChange={(event) => handleRegisterChange(event, 'registerPassword')} required />
+                    <input type="password" placeholder="Confirmar Contraseña" value={registerValues.registerPassword2} onChange={(event) => handleRegisterChange(event, 'registerPassword2')} required />
+                    <button type="submit">Registrarse</button>
+                </form>
             </div>
         </div>
-    )
+    );
 }
 
 export default LoginPage;

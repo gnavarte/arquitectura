@@ -8,7 +8,7 @@ function AppRouter() {
     const { isLoggedIn } = useAuth();
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="/login" element={<LoginPage />} />
             {isLoggedIn && <Route path="/dashboard" element={<DashboardPage />} />}
         </Routes>
