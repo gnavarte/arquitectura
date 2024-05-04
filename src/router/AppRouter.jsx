@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
@@ -11,9 +11,19 @@ function AppRouter() {
         <>
             <NavigationBar />
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/dashboard" element={isLoggedIn ? <DashboardPage /> : <LoginPage />} />
+                {isLoggedIn ? (
+                    <>
+                        <Route path="/*" element={<Navigate to="/dashboard" />} />
+                        <Route path="/dashboard" element={<DashboardPage />} />
+                    </>
+                ) : (
+                    <>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/*" element={<Navigate to="/" />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/dashboard" element={<Navigate to="/login" />} />
+                    </>
+                )}
             </Routes>
         </>
     );
