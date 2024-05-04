@@ -6,7 +6,7 @@ function HomePage() {
             <section className="hero">
                 <div className="container">
                     <h1>¡Bienvenido a AgroSmart Solutions S.A.!</h1>
-                    <p>Revolutionizing Argentine agriculture through IoT technologies to maximize efficiency, reduce costs, and increase agricultural production sustainably.</p>
+                    <p>Revolucionando la agricultura argentina a través de tecnologías de IoT para maximizar la eficiencia, reducir costos y aumentar la producción agrícola de manera sostenible.</p>
                     <a href="#about" className="btn btn-primary">Acerca de Nosotros</a>
                 </div>
             </section>
