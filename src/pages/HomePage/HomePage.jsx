@@ -12,10 +12,10 @@ function HomePage() {
                 </div>
             </section>
 
-            <section className="about">
+            <section id="about" className="about">
                 <div className="container">
                     <img src={AgricultureImg} alt="Agriculture" />
-                    <h2>Acerca de Nosotros</h2>
+                    <h2>Acerca de nosotros</h2>
                     <p>En AgroSmart Solutions, nos dedicamos a proporcionar soluciones tecnológicas innovadoras para la agricultura argentina. Nuestra misión es ayudar a los agricultores a tomar decisiones informadas y optimizar sus operaciones agrícolas.</p>
                     <p>Nuestros sistemas de monitoreo y gestión basados en IoT permiten a los agricultores controlar variables críticas como humedad, temperatura y condiciones del suelo en tiempo real, lo que les ayuda a reducir el uso de recursos, prevenir pérdidas y mejorar la productividad.</p>
                 </div>
@@ -23,7 +23,7 @@ function HomePage() {
 
             <section className="features">
                 <div className="container">
-                    <h2>Nuestra Propuesta de Valor</h2>
+                    <h2>Nuestra propuesta de valor</h2>
                     <div className="features-row">
                         <div className="feature">
                             <h3>Optimización</h3>
@@ -47,18 +47,18 @@ function HomePage() {
 
             <section className="use-cases">
                 <div className="container">
-                    <h2>Casos de Uso</h2>
+                    <h2>Casos de uso</h2>
                     <div className="use-cases-row">
                         <div className="use-case">
-                            <h3>Monitoreo de Silo-bolsas</h3>
+                            <h3>Monitoreo de silo-bolsas</h3>
                             <p>Implementamos microchips en silo-bolsas para monitorizar la humedad y temperatura, asegurando la calidad de los granos almacenados.</p>
                         </div>
                         <div className="use-case">
-                            <h3>Detección de Enfermedades</h3>
+                            <h3>Detección de enfermedades</h3>
                             <p>Utilizamos sensores para detectar signos tempranos de enfermedades o infestaciones, permitiendo intervenciones rápidas y localizadas.</p>
                         </div>
                         <div className="use-case">
-                            <h3>Gestión del Riego</h3>
+                            <h3>Gestión del riesgo</h3>
                             <p>Empleamos sensores de humedad del suelo que activan sistemas de riego solo cuando es necesario, optimizando el uso del agua.</p>
                         </div>
                     </div>

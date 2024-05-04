@@ -30,6 +30,8 @@
 .about .container img {
     width: 100%;
     height: auto;
+    border-radius: 10px;
+    filter: blur(0.5px);
 }
 
 .about .container h2 {
