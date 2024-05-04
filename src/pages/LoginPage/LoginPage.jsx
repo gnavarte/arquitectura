@@ -22,9 +22,9 @@ function LoginPage() {
     const { loginEmail, loginPassword, onChange: handleLoginChange } = useForm(loginFormFields);
     const { registerName, registerEmail, registerPassword, registerPassword2, onChange: handleRegisterChange } = useForm(registerFormFields);
 
-    const loginSubmit = (event) => {
+    const loginSubmit = async (event) => {
         event.preventDefault();
-        login(loginEmail, loginPassword);
+        await login(loginEmail, loginPassword);
         navigate('/dashboard');
     }
 

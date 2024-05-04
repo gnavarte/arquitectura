@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import UserContext from '../context/UserContext';
 
 export const useAuth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const login = (email, password) => setIsLoggedIn(true);
