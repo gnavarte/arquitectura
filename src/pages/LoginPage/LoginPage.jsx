@@ -49,8 +49,8 @@ function LoginPage() {
             <div className="login-form">
                 <h3>¡Nos alegra verte de nuevo!</h3>
                 <form onSubmit={loginSubmit}>
-                    <input type="email" placeholder="Correo electrónico" value={loginEmail} onChange={(event) => handleLoginChange(event.target.value, 'loginEmail')} />
-                    <input type="password" placeholder="Contraseña" value={loginPassword} onChange={(event) => handleLoginChange(event.target.value, 'loginPassword')} />
+                    <input type="email" placeholder="Correo electrónico" value={loginEmail} onChange={(event) => handleLoginChange(event.target.value, 'loginEmail')} required />
+                    <input type="password" placeholder="Contraseña" value={loginPassword} onChange={(event) => handleLoginChange(event.target.value, 'loginPassword')} required />
                     <button type="submit">Iniciar Sesión</button>
                 </form>
             </div>
