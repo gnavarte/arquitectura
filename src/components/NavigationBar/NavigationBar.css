@@ -14,6 +14,11 @@
   font-family: 'Saira', sans-serif;
   display: flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.title:hover {
+  text-decoration: none;
 }
 
 .planta-icon {

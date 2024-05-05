@@ -40,10 +40,10 @@ function NavigationBar() {
 
   return (
     <div className="navigation-container">
-      <div className="title">
+      <a href="/" className="title">
         <img src={plantaImg} alt="Planta" className="planta-icon" />
         AgroSmart Solutions
-      </div>
+      </a>
       <nav>
         <ul className="nav-list">
           {isLoggedIn ? (
