@@ -25,7 +25,7 @@ export const useAuth = () => {
     await handleResponse(response);
   };
 
-  const logout = () => {
+  const logout = async () => {
     setUser(null);
   };
 
