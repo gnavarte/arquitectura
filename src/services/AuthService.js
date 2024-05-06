@@ -1,5 +1,10 @@
+import { getEnvVariables } from "../helpers";
+
+const { BACKEND_URL, BACKEND_PORT } = getEnvVariables();
+const authUrl = `${BACKEND_URL}:${BACKEND_PORT}/auth`;
+
 export const authLogin = async (email, password) => {
-    const response = await fetch('http://localhost:3000/auth/login', {
+    const response = await fetch(`${authUrl}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -10,7 +15,7 @@ export const authLogin = async (email, password) => {
 };
 
 export const authSignup = async (name, email, password) => {
-    const response = await fetch('http://localhost:3000/auth/signup', {
+    const response = await fetch(`${authUrl}/signup`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
