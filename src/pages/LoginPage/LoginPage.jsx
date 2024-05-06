@@ -1,40 +1,37 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useAuth, useForm } from '../../hooks';
 import './LoginPage.css';
 
 const loginFormFields = {
     loginEmail: '',
     loginPassword: '',
-}
+};
 
 const registerFormFields = {
     registerName: '',
     registerEmail: '',
     registerPassword: '',
     registerPassword2: '',
-}
+};
 
 function LoginPage() {
-
-    const navigate = useNavigate();
     const { login, register, errorMessage } = useAuth();
     const { loginEmail, loginPassword, onChange: handleLoginChange } = useForm(loginFormFields);
     const { registerName, registerEmail, registerPassword, registerPassword2, onChange: handleRegisterChange } = useForm(registerFormFields);
 
     const loginSubmit = async (event) => {
         event.preventDefault();
-        await login(loginEmail, loginPassword).then(() => {
-            navigate('/dashboard');
-        });
-    }
+        await login(loginEmail, loginPassword);
+    };
 
     const registerSubmit = async (event) => {
         event.preventDefault();
-        await register(registerName, registerEmail, registerPassword).then(() => {
-            navigate('/dashboard');
-        });
-    }
+        if (registerPassword !== registerPassword2) {
+            alert('Las contraseñas no coinciden');
+            return;
+        }
+        await register(registerName, registerEmail, registerPassword);
+    };
 
     useEffect(() => {
         if (errorMessage !== null) {

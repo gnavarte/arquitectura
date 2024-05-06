@@ -1,14 +1,18 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 import { authLogin, authSignup } from '../services/AuthService';
 
 export const useAuth = () => {
   const { user, setUser, errorMessage, setErrorMessage } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleResponse = async (response) => {
     const data = await response.json();
     if (response.status === 201 || response.status === 200) {
       setUser(data.user);
+      setErrorMessage(null);
+      navigate('/dashboard');
     } else {
       if (Array.isArray(data.message)) {
         data.message = data.message
