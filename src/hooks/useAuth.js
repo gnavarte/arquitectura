@@ -8,7 +8,6 @@ export const useAuth = () => {
 
   const handleResponse = async (response) => {
     const data = await response.json();
-    console.log('Esta es la data', data);
     if (response.status === 201 || response.status === 200) {
       setUser(data.user);
     } else {
