@@ -1,10 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import UserContext from '../context/UserContext';
 import { authLogin, authSignup } from '../services/AuthService';
 
 export const useAuth = () => {
-  const { user, setUser } = useContext(UserContext);
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const { user, setUser, errorMessage, setErrorMessage } = useContext(UserContext);
 
   const handleResponse = async (response) => {
     const data = await response.json();

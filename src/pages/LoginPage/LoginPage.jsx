@@ -37,10 +37,10 @@ function LoginPage() {
     }
 
     useEffect(() => {
-        if (errorMessage != null) {
-            console.error('Error en la autenticación:', errorMessage);
+        if (errorMessage) {
+            alert(errorMessage);
         }
-    }, [errorMessage])
+    }, [errorMessage]);
 
     return (
         <div className="login-container">
