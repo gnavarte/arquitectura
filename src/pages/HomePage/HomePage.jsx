@@ -1,4 +1,5 @@
 import './HomePage.css';
+import Footer from '../../components/Footer/Footer';
 import AgricultureImg from '../../assets/images/agriculture.jpg';
 
 function HomePage() {
@@ -64,6 +65,8 @@ function HomePage() {
                     </div>
                 </div>
             </section>
+
+            <Footer />
         </div>
     );
 }

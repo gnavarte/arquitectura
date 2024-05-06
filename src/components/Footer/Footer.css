@@ -1,0 +1,27 @@
+.footer-container {
+  background-color: black;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 100;
+  font-family: 'Saira', sans-serif;
+  text-align: center;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #49a010;
+}
