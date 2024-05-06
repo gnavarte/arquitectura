@@ -37,11 +37,11 @@ function LoginPage() {
     }
 
     useEffect(() => {
-        if (errorMessage) {
+        if (errorMessage !== null) {
             alert(errorMessage);
         }
     }, [errorMessage]);
-
+    
     return (
         <div className="login-container">
             <div className="login-form">
