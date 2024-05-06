@@ -6,9 +6,8 @@ export const authLogin = async (email, password) => {
         },
         body: JSON.stringify({ email, password }),
     });
-    const data = await response.json();
-    return data;
-}
+    return response;
+};
 
 export const authSignup = async (name, email, password) => {
     const response = await fetch('http://localhost:3000/auth/signup', {
@@ -18,6 +17,5 @@ export const authSignup = async (name, email, password) => {
         },
         body: JSON.stringify({ name, email, password }),
     });
-    const data = await response.json();
-    return data;
-}
+    return response;
+};
