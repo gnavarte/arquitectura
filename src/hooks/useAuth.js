@@ -11,6 +11,11 @@ export const useAuth = () => {
     if (response.status === 201 || response.status === 200) {
       setUser(data.user);
     } else {
+      if (Array.isArray(data.message)) {
+        data.message = data.message
+          .map((msg) => msg.charAt(0).toUpperCase() + msg.slice(1))
+          .join('\n');
+      }
       setErrorMessage(data.message);
     }
   };
