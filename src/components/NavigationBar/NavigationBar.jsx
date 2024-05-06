@@ -35,10 +35,10 @@ function NavigationBar() {
 
   return (
     <div className="navigation-container">
-      <a href="/" className="title">
+      <span className="title" onClick={isLoggedIn ? () => {} : () => navigate('/')} style={{ cursor: isLoggedIn ? 'default' : 'pointer' }}>
         <img src={plantaImg} alt="Planta" className="planta-icon" />
         AgroSmart Solutions
-      </a>
+      </span>
       <nav>
         <ul className="nav-list">
           {isLoggedIn ? (
