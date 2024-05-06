@@ -7,8 +7,7 @@ export const authLogin = async (email, password) => {
             },
             body: JSON.stringify({ email, password }),
         });
-        console.log(response);
-        return response.data;
+        return response.json();
     } catch (error) {
         throw error;
     }
@@ -23,7 +22,7 @@ export const authSignup = async (name, email, password) => {
             },
             body: JSON.stringify({ name, email, password }),
         });
-        return response.data;
+        return response.json();
     } catch (error) {
         throw error;
     }

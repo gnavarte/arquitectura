@@ -7,15 +7,19 @@ export const useAuth = () => {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const register = async (name, email, password) =>
-    await authSignup(name, email, password).then((user) => {
-      setUser(user);
+    await authSignup(name, email, password).then((data) => {
+      if (data.user) {
+        setUser(data.user);
+      }
     }).catch((error) => {
       setErrorMessage(error.response.data.message);
     });
 
   const login = async (email, password) => {
-    await authLogin(email, password).then((user) => {
-      setUser(user);
+    await authLogin(email, password).then((data) => {
+      if (data.user) {
+        setUser(data.user);
+      }
     }).catch((error) => {
       setErrorMessage(error.response.data.message);
     });
