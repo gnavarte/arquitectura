@@ -24,18 +24,16 @@ function LoginPage() {
 
     const loginSubmit = async (event) => {
         event.preventDefault();
-        await login(loginEmail, loginPassword);
-        navigate('/dashboard');
+        await login(loginEmail, loginPassword).then(() => {
+            navigate('/dashboard');
+        });
     }
 
-    const registerSubmit = (event) => {
+    const registerSubmit = async (event) => {
         event.preventDefault();
-        if (registerPassword !== registerPassword2) {
-            console.error('Contraseñas no son iguales');
-            return;
-        }
-
-        register(registerName, registerEmail, registerPassword);
+        await register(registerName, registerEmail, registerPassword).then(() => {
+            navigate('/dashboard');
+        });
     }
 
     useEffect(() => {

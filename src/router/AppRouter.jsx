@@ -1,17 +1,18 @@
+import { useContext } from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import DashboardPage from "../pages/DashboardPage/DashboardPage";
-import { useAuth } from "../hooks/useAuth";
+import UserContext from '../context/UserContext';
 
 function AppRouter() {
-    const { isLoggedIn } = useAuth();
+    const { user } = useContext(UserContext);
     return (
         <>
             <NavigationBar />
             <Routes>
-                {isLoggedIn ? (
+                {user ? (
                     <>
                         <Route path="/*" element={<Navigate to="/dashboard" />} />
                         <Route path="/dashboard" element={<DashboardPage />} />
