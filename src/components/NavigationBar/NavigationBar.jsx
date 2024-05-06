@@ -29,14 +29,9 @@ function NavigationBar() {
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
+  const handleLogout = async () => await logout().then(() => navigate('/'));
 
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
-  };
+  const handleTabClick = (tabName) => setActiveTab(tabName);
 
   return (
     <div className="navigation-container">
